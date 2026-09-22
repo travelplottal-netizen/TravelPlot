@@ -1,6 +1,6 @@
-/* ==============================
-   GENERAL
-   ============================== */
+/* =========================
+   BASIC RESET
+   ========================= */
 
 * {
     box-sizing: border-box;
@@ -12,59 +12,54 @@ html {
 
 body {
     margin: 0;
-    font-family: 'Montserrat', sans-serif;
-    color: black;
+    font-family: Arial, sans-serif;
+    color: #111;
 }
 
 
-/* ==============================
+/* =========================
    HOME
-   ============================== */
+   ========================= */
 
 .home {
+    min-height: 100vh;
+
     background:
         linear-gradient(
-            rgba(0, 0, 0, 0.25),
-            rgba(0, 0, 0, 0.25)
+            rgba(0, 0, 0, 0.35),
+            rgba(0, 0, 0, 0.35)
         ),
-        url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlKDuTTHV0Z-A4H9O1UN0pJQINN2uJp9jD25hLDpN-3exuv4IIvzr2o3Q&s=10')
-        no-repeat center center;
+        url("https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=2000&q=80");
 
     background-size: cover;
-    background-attachment: fixed;
+    background-position: center;
 
-    min-height: 100vh;
     color: white;
 }
 
 
-/* ==============================
+/* =========================
    HEADER
-   ============================== */
+   ========================= */
 
 header {
-    padding: 25px 50px;
+    height: 80px;
+
+    padding: 0 50px;
 
     display: flex;
     justify-content: space-between;
     align-items: center;
 
     background: rgba(0, 0, 0, 0.45);
-
-    position: relative;
-    z-index: 10;
 }
 
 
 /* LOGO */
 
 .logo {
-    color: white;
-    text-decoration: none;
-
-    font-size: 24px;
-    font-weight: 700;
-
+    font-size: 25px;
+    font-weight: bold;
     letter-spacing: 1px;
 }
 
@@ -80,253 +75,182 @@ nav a {
     color: white;
     text-decoration: none;
 
-    font-size: 14px;
-    font-weight: 500;
+    font-size: 15px;
 
-    transition: 0.3s ease;
+    transition: opacity 0.3s;
 }
 
 nav a:hover {
-    opacity: 0.65;
+    opacity: 0.6;
 }
 
 
-/* MOBILE MENU BUTTON */
-
-.menu-button {
-    display: none;
-
-    background: none;
-    border: none;
-
-    color: white;
-    font-size: 28px;
-
-    cursor: pointer;
-}
-
-
-/* ==============================
+/* =========================
    HERO
-   ============================== */
+   ========================= */
 
 .hero {
     min-height: calc(100vh - 80px);
 
     display: flex;
+    flex-direction: column;
+
     justify-content: center;
     align-items: center;
 
     text-align: center;
 
-    padding: 40px 20px;
+    padding: 20px;
 }
 
-.hero-content {
-    max-width: 750px;
-}
-
-.small-heading {
+.hero p {
     font-size: 13px;
-    font-weight: 600;
-
     letter-spacing: 4px;
-
-    margin-bottom: 20px;
+    font-weight: bold;
 }
 
 .hero h1 {
-    font-size: clamp(55px, 10vw, 110px);
+    font-size: 90px;
 
-    margin: 0 0 20px;
+    margin: 10px 0;
 
-    font-weight: 700;
-    letter-spacing: -3px;
+    letter-spacing: -4px;
 }
 
-.hero p:not(.small-heading) {
-    font-size: 18px;
-    line-height: 1.7;
+.hero h2 {
+    font-size: 20px;
+    font-weight: normal;
 
-    max-width: 600px;
-    margin: 0 auto 35px;
+    margin-bottom: 35px;
 }
 
 
-/* BUTTON */
+/* =========================
+   BUTTON
+   ========================= */
 
-.hero-button {
+.button {
     display: inline-block;
 
-    padding: 14px 28px;
+    padding: 15px 30px;
 
     background: white;
-    color: black;
+    color: #111;
 
     text-decoration: none;
 
-    font-size: 14px;
-    font-weight: 600;
+    font-weight: bold;
 
-    border-radius: 3px;
-
-    transition: 0.3s ease;
+    transition: 0.3s;
 }
 
-.hero-button:hover {
-    background: black;
+.button:hover {
+    background: #111;
     color: white;
-
-    transform: translateY(-2px);
 }
 
 
-/* ==============================
+/* =========================
    ABOUT
-   ============================== */
+   ========================= */
 
 .about {
-    background: #ffffff;
+    background: white;
 
-    padding: 120px 20px;
+    padding: 120px 25px;
 }
 
-.about-container {
-    max-width: 900px;
+.content {
+    max-width: 800px;
+
     margin: auto;
 }
 
-.about-text {
-    max-width: 750px;
-}
-
-.section-label {
-    color: #777;
-
+.label {
     font-size: 12px;
-    font-weight: 600;
 
     letter-spacing: 3px;
 
-    margin-bottom: 15px;
+    color: #777;
+
+    font-weight: bold;
 }
 
 .about h2,
 .contact h2 {
-    font-size: 42px;
+    font-size: 45px;
 
-    margin: 0 0 30px;
-
-    letter-spacing: -1px;
+    margin-top: 10px;
 }
 
-.about p:not(.section-label) {
-    color: #555;
-
-    font-size: 16px;
-    line-height: 1.9;
-
-    margin-bottom: 20px;
-}
-
-
-/* ==============================
-   CONTACT
-   ============================== */
-
-.contact {
-    background: #f4f4f4;
-
-    text-align: center;
-
-    padding: 100px 20px;
-}
-
-.contact-container {
-    max-width: 650px;
-    margin: auto;
-}
-
-.contact p:not(.section-label) {
-    color: #555;
+.about p:not(.label),
+.contact p:not(.label) {
+    font-size: 17px;
 
     line-height: 1.8;
 
-    margin-bottom: 30px;
+    color: #555;
 }
 
 
-/* ==============================
+/* =========================
+   CONTACT
+   ========================= */
+
+.contact {
+    background: #f3f3f3;
+
+    padding: 120px 25px;
+
+    text-align: center;
+}
+
+
+/* =========================
    FOOTER
-   ============================== */
+   ========================= */
 
 footer {
     background: #111;
 
-    color: #aaa;
+    color: white;
 
     text-align: center;
 
     padding: 25px;
 
-    font-size: 12px;
+    font-size: 13px;
 }
 
 
-/* ==============================
+/* =========================
    MOBILE
-   ============================== */
+   ========================= */
 
 @media (max-width: 700px) {
 
     header {
-        padding: 20px 25px;
+        padding: 0 20px;
     }
 
     nav {
-        display: none;
-
-        position: absolute;
-
-        top: 100%;
-        left: 0;
-        right: 0;
-
-        flex-direction: column;
-
-        gap: 0;
-
-        background: rgba(0, 0, 0, 0.95);
-
-        padding: 10px 0;
-    }
-
-    nav.active {
-        display: flex;
+        gap: 15px;
     }
 
     nav a {
-        padding: 15px 25px;
-    }
-
-    .menu-button {
-        display: block;
+        font-size: 12px;
     }
 
     .hero h1 {
-        letter-spacing: -2px;
+        font-size: 55px;
     }
 
-    .hero p:not(.small-heading) {
-        font-size: 16px;
-    }
-
-    .about {
-        padding: 80px 25px;
+    .hero h2 {
+        font-size: 17px;
     }
 
     .about h2,
     .contact h2 {
-        font-size: 34px;
+        font-size: 35px;
     }
 }
