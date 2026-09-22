@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TravelPlot - חוויות מסע בלתי נשכחות</title>
     
-    <!-- Google Fonts: Heebo & Assistant for modern Hebrew typography, Montserrat for English logo -->
+    <!-- Google Fonts: Heebo & Assistant with fallback for Hebrew text, Montserrat for English brand -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700;800&family=Heebo:wght@300;400;600;700;800;900&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
@@ -14,6 +14,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
+        @font-face {
+            font-family: 'Adapter';
+            src: local('Adapter'), local('Adapter Hebrew');
+            font-display: swap;
+        }
+
         :root {
             --primary-color: #008080;
             --primary-hover: #005f5f;
@@ -36,7 +42,7 @@
         }
 
         body {
-            font-family: 'Heebo', 'Assistant', sans-serif;
+            font-family: Adapter, 'Adapter Hebrew', 'Heebo', 'Assistant', sans-serif;
             color: var(--text-dark);
             background-color: #ffffff;
             line-height: 1.6;
@@ -47,11 +53,12 @@
 
         /* Keep English Brand / Logo LTR */
         .brand-logo {
-            font-family: "adapter-mono-pe-variable", "Adapter Mono PE", monospace;
+            font-family: 'Montserrat', sans-serif;
             direction: ltr;
             display: inline-block;
         }
 
+        /* Header Navigation */
         header {
             position: fixed;
             top: 0;
@@ -166,7 +173,6 @@
             overflow: hidden;
         }
 
-        /* Slideshow Background Engine */
         .hero-slideshow {
             position: absolute;
             top: 0;
@@ -194,7 +200,6 @@
             transform: scale(1);
         }
 
-        /* Dark Overlay Gradient for maximum readability */
         .hero-overlay {
             position: absolute;
             top: 0;
@@ -303,7 +308,6 @@
             border-color: rgba(255, 255, 255, 0.5);
         }
 
-        /* Slideshow Indicator Dots */
         .slideshow-dots {
             position: absolute;
             bottom: 30px;
@@ -444,15 +448,12 @@
         }
 
         .card-price {
-            font-size: 20px;
-            font-weight: 800;
-            color: var(--primary-color);
-        }
-
-        .card-price span {
-            font-size: 13px;
-            color: var(--text-muted);
-            font-weight: 400;
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--accent-gold);
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
 
         .card-link {
@@ -467,7 +468,7 @@
         }
 
         .card-link i {
-            transform: scaleX(-1); /* Flip arrow for RTL */
+            transform: scaleX(-1);
             transition: transform 0.3s ease;
         }
 
@@ -559,30 +560,29 @@
 
         .about-stat-badge {
             position: absolute;
-            bottom: -30px;
+            bottom: -20px;
             right: -20px;
             background: #0f172a;
             color: #ffffff;
-            padding: 24px 30px;
+            padding: 20px 26px;
             border-radius: 20px;
             box-shadow: 0 15px 35px rgba(0,0,0,0.2);
             display: flex;
             align-items: center;
-            gap: 18px;
+            gap: 16px;
             border: 1px solid rgba(255,255,255,0.1);
         }
 
-        .stat-number {
-            font-size: 38px;
-            font-weight: 800;
+        .stat-icon {
+            font-size: 30px;
             color: var(--accent-gold);
-            line-height: 1;
         }
 
         .stat-label {
             font-size: 14px;
-            color: rgba(255,255,255,0.8);
+            color: rgba(255,255,255,0.9);
             line-height: 1.3;
+            font-weight: 600;
         }
 
         .contact {
@@ -653,9 +653,11 @@
             color: rgba(255,255,255,0.5);
         }
 
-        .info-text span {
+        .info-text span, .info-text a {
             font-size: 16px;
             font-weight: 600;
+            color: #ffffff;
+            text-decoration: none;
         }
 
         .contact-form {
@@ -759,7 +761,6 @@
             transform: translateY(-3px);
         }
 
-        /* Floating WhatsApp Button */
         .whatsapp-float {
             position: fixed;
             bottom: 30px;
@@ -792,7 +793,6 @@
             padding-top: 25px;
         }
 
-        /* Success Modal Popup */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -932,6 +932,7 @@
             <a href="#home">דף הבית</a>
             <a href="#destinations">יעדים נבחרים</a>
             <a href="#about">עלינו</a>
+            <a href="#contact">צור קשר</a>
             <a href="https://wa.me/972586785577" target="_blank" class="nav-btn">
                 <i class="fa-brands fa-whatsapp"></i> ייעוץ ראשוני חינם
             </a>
@@ -940,11 +941,10 @@
 
     <section class="hero" id="home">
         <div class="hero-slideshow" id="slideshow">
-            <!-- Images cycling dynamically through JS with provided URLs -->
             <div class="slide active" style="background-image: url('https://rtwin30days.com/wp-content/uploads/2015/02/Hong-Island-Krabi-Province-Thailand-683x1024.jpg');"></div>
             <div class="slide" style="background-image: url('https://www.stokedtotravel.com/wp-content/uploads/2017/04/IMG_2100-1440x960.jpg');"></div>
             <div class="slide" style="background-image: url('https://cdn.tourradar.com/s3/serp/original/5032_Gia44gKW.jpg');"></div>
-            <div class="slide" style="background-image: url('https://images.squarespace-cdn.com/content/v1/5bbcf00a9b8fe874ed2f03d0/1586583000885-Y89RJC0I1IM9UR0N4HAJ/26+Things+to+know+before+traveling+to+Japan+for+the+first+time%3A+Etiquette+and+Cultural+Guide+%7C+Helena+Bradbury+Travel+Blog+%7C+How+to+prepare+for+a+trip+to+Japan+%7C+Tips+for+traveling+in+Japan+%7C+Japan+travel+tips+%7C+Traveling+to+Japan+for+the+first+time+%7C+planning+japan+trip+%7C+Japan+Tourist+tips+%7C+travel+tips+for+japan+%7C+japan+etiquette+tips+%7C+mistakes+to+avoid+Japan+%7C+first+time+to+japan+%7C+japan+travel-advice+%7C+japanese+culture+tips+%7C+japan+travel+guide+%7C+tourist+etiquette+%7C+Japan+tips+and+tricks');"></div>
+            <div class="slide" style="background-image: url('https://images.squarespace-cdn.com/content/v1/5bbcf00a9b8fe874ed2f03d0/1586583000885-Y89RJC0I1IM9UR0N4HAJ/26+Things+to+know+before+traveling+to+Japan+for+the+first+time%3A+Etiquette+and+Cultural+Guide+%7C+Helena+Bradbury+Travel+Blog+%7C+How+to+prepare+for+a+trip+to+Japan+%7C+Tips+for+traveling+in+Japan+%7C+Japan+travel+tips+%7C+Traveling+to+Japan+for+the+first+time+%7C+planning+japan+trip+%7C+Japan+Tourist+tips+%7C+travel+tips+for+japan+%7C+japan+etiquette+tips+%7C+mistakes+to+avoid+Japan+%7C+first+time+to+japan+%7C+japan+travel+advice+%7C+japanese+culture+tips+%7C+japan+travel+guide+%7C+tourist+etiquette+%7C+Japan+tips+and+tricks');"></div>
         </div>
 
         <div class="hero-overlay"></div>
@@ -953,7 +953,7 @@
             <span class="small-heading">✨ ייעוץ ראשוני חינם ✨</span>
             <h1>לגלות את העולם בדרך שלך</h1>
             <p class="hero-desc">
-                אנחנו ב- <span class="brand-logo">TravelPlot</span> מתכננים מסעות מותאמים אישית ביעדים הקסומים ביותר באסיה. הצטרפו אלינו לחוויה ייחודית שתזכרו לכל החיים.
+                אנחנו ב- <span class="brand-logo">TravelPlot</span> מתכננים מסעות מותאמים אישית ביעדים הקסומים ביותר בתאילנד, הפיליפינים, יפן ועוד. הצטרפו אלינו לחוויה ייחודית שתזכרו לכל החיים.
             </p>
             <div class="hero-actions">
                 <a href="https://wa.me/972586785577" target="_blank" class="btn-primary">
@@ -973,21 +973,21 @@
         <div class="section-header">
             <span class="section-label">הרפתקאות מומלצות</span>
             <h2 class="section-title">היעדים הפופולריים ביותר</h2>
-            <p class="section-subtitle">מגוון מסלולים בלעדיים שנבנו במיוחד עבור מטיילים המחפשים שילוב של יוקרה, טבע ותרבות.</p>
+            <p class="section-subtitle">מגוון מסלולים בלעדיים שנבנו במיוחד עבור מטיילים המחפשים שילוב של טבע, חופש ותרבות.</p>
         </div>
 
         <div class="cards-grid">
-            <!-- Card 1 -->
+            <!-- Thailand Card -->
             <div class="card">
                 <div class="card-img-wrapper">
                     <img src="https://rtwin30days.com/wp-content/uploads/2015/02/Hong-Island-Krabi-Province-Thailand-683x1024.jpg" alt="אי קראבי תאילנד" class="card-img" onerror="this.src='https://placehold.co/600x400/008080/FFFFFF?text=Thailand'">
                     <span class="card-tag">איים וחופים</span>
                 </div>
                 <div class="card-body">
-                    <h3 class="card-title">קראבי ואי האנג, תאילנד</h3>
-                    <p class="card-text">שיוט מרהיב במי טורקיז, לגונות נסתרות וצוקי גיר עוצרי נשימה בלב גן העדן התאילנדי.</p>
+                    <h3 class="card-title">תאילנד והאיים הקסומים</h3>
+                    <p class="card-text">לגלות את האיים המרהיבים של תאילנד, שיוט במי טורקיז, לגונות נסתרות וצוקים עוצרי נשימה.</p>
                     <div class="card-footer">
-                        <div class="card-price" style="font-size: 15px; color: var(--accent-gold);">
+                        <div class="card-price">
                             <i class="fa-solid fa-gift"></i> ייעוץ ראשוני חינם
                         </div>
                         <a href="https://wa.me/972586785577?text=שלום!%20אשמח%20לקבל%20פרטים%20על%20הטיול%20לתאילנד" target="_blank" class="card-link">לפרטים בוואטסאפ <i class="fa-solid fa-arrow-right"></i></a>
@@ -995,25 +995,25 @@
                 </div>
             </div>
 
-            <!-- Card 2 -->
+            <!-- Philippines Card -->
             <div class="card">
                 <div class="card-img-wrapper">
-                    <img src="https://www.stokedtotravel.com/wp-content/uploads/2017/04/IMG_2100-1440x960.jpg" alt="נופים טרופיים" class="card-img" onerror="this.src='https://placehold.co/600x400/008080/FFFFFF?text=Tropical'">
-                    <span class="card-tag">טבע ואקזוטיקה</span>
+                    <img src="https://www.stokedtotravel.com/wp-content/uploads/2017/04/IMG_2100-1440x960.jpg" alt="הפיליפינים" class="card-img" onerror="this.src='https://placehold.co/600x400/008080/FFFFFF?text=Philippines'">
+                    <span class="card-tag">טבע ויוקרה</span>
                 </div>
                 <div class="card-body">
-                    <h3 class="card-title">מסע טרופי בין אגמים</h3>
-                    <p class="card-text">סיורי עומק בג'ונגלים פראיים, שמורות טבע מוגנות ומפלים נסתרים הרחק מההמונים.</p>
+                    <h3 class="card-title">הפיליפינים הטרופית</h3>
+                    <p class="card-text">חופשה מרגיעה ומפנקת בפיליפינים, חופים לבנים, ריזורטים מרהיבים וצלילות בשמורות טבע נסתרות.</p>
                     <div class="card-footer">
-                        <div class="card-price" style="font-size: 15px; color: var(--accent-gold);">
+                        <div class="card-price">
                             <i class="fa-solid fa-gift"></i> ייעוץ ראשוני חינם
                         </div>
-                        <a href="https://wa.me/972586785577?text=שלום!%20אשמח%20לקבל%20פרטים%20על%20המסע%20הטרופי" target="_blank" class="card-link">לפרטים בוואטסאפ <i class="fa-solid fa-arrow-right"></i></a>
+                        <a href="https://wa.me/972586785577?text=שלום!%20אשמח%20לקבל%20פרטים%20על%20הטיול%20לפיליפינים" target="_blank" class="card-link">לפרטים בוואטסאפ <i class="fa-solid fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
 
-            <!-- Card 3 -->
+            <!-- Japan Card -->
             <div class="card">
                 <div class="card-img-wrapper">
                     <img src="https://images.squarespace-cdn.com/content/v1/5bbcf00a9b8fe874ed2f03d0/1586583000885-Y89RJC0I1IM9UR0N4HAJ/26+Things+to+know+before+traveling+to+Japan+for+the+first+time%3A+Etiquette+and+Cultural+Guide+%7C+Helena+Bradbury+Travel+Blog+%7C+How+to+prepare+for+a+trip+to+Japan+%7C+Tips+for+traveling+in+Japan+%7C+Japan+travel+tips+%7C+Traveling+to+Japan+for+the+first+time+%7C+planning+japan+trip+%7C+Japan+Tourist+tips+%7C+travel+tips+for+japan+%7C+japan+etiquette+tips+%7C+mistakes+to+avoid+Japan+%7C+first+time+to+japan+%7C+japan+travel+advice+%7C+japanese+culture+tips+%7C+japan+travel+guide+%7C+tourist+etiquette+%7C+Japan+tips+and+tricks" alt="תרבות יפן" class="card-img" onerror="this.src='https://placehold.co/600x400/008080/FFFFFF?text=Japan'">
@@ -1023,7 +1023,7 @@
                     <h3 class="card-title">יפן: מטוקיו ועד קיוטו</h3>
                     <p class="card-text">שילוב מעורר השראה בין גורדי שחקים עתידניים, מקדשים עתיקים, קולינריה משובחת ותרבות מרתקת.</p>
                     <div class="card-footer">
-                        <div class="card-price" style="font-size: 15px; color: var(--accent-gold);">
+                        <div class="card-price">
                             <i class="fa-solid fa-gift"></i> ייעוץ ראשוני חינם
                         </div>
                         <a href="https://wa.me/972586785577?text=שלום!%20אשמח%20לקבל%20פרטים%20על%20הטיול%20ליפן" target="_blank" class="card-link">לפרטים בוואטסאפ <i class="fa-solid fa-arrow-right"></i></a>
@@ -1042,7 +1042,7 @@
                     ב- <span class="brand-logo">TravelPlot</span>, אנו מאמינים שנסיעה היא הרבה יותר מסתם מעבר ממקום למקום – היא הזדמנות ליצור זיכרונות בלתי נשכחים, לחוות תרבויות חדשות ולהתנתק מהשגרה.
                 </p>
                 <p>
-                    צוות המומחים שלנו חי ונושם את היעדים המרהיבים ביותר במזרח הרחוק ובעולם. אנו מציעים **ייעוץ ראשוני חינם** ומלווים אתכם החל משלב התכנון המדויק ועד לפרטים הקטנים ביותר בשטח.
+                    אנו מעניקים שירות אישי ומקיף מרחוק – עם תכנון קפדני לכל יעד, מענה מהיר בוואטסאפ ושיחות זום, וכל זאת החל מ-**ייעוץ ראשוני חינם** וללא שום התחייבות.
                 </p>
 
                 <div class="features-list">
@@ -1054,10 +1054,10 @@
                         </div>
                     </div>
                     <div class="feature-item">
-                        <div class="feature-icon"><i class="fa-solid fa-sliders"></i></div>
+                        <div class="feature-icon"><i class="fa-solid fa-laptop-house"></i></div>
                         <div>
-                            <div class="feature-title">מסלולים בהתאמה אישית</div>
-                            <div class="feature-desc">תכנון מדויק לפי הקצב, התקציב וההעדפות שלכם.</div>
+                            <div class="feature-title">שירות אונליין נגיש</div>
+                            <div class="feature-desc">זמינות מלאה בוואטסאפ ובזום מכל מקום שתרצו.</div>
                         </div>
                     </div>
                 </div>
@@ -1066,8 +1066,8 @@
             <div class="about-image-stack">
                 <img src="https://cdn.tourradar.com/s3/serp/original/5032_Gia44gKW.jpg" alt="מסע בעולם" class="about-img-main" onerror="this.src='https://placehold.co/600x500/008080/FFFFFF?text=TravelPlot'">
                 <div class="about-stat-badge">
-                    <div class="stat-number">10+</div>
-                    <div class="stat-label">שנות ניסיון<br>ואלפי מטיילים מרוצים</div>
+                    <div class="stat-icon"><i class="fa-solid fa-heart-circle-check"></i></div>
+                    <div class="stat-label">תכנון קפדני,<br>קשר ישיר וליווי אישי</div>
                 </div>
             </div>
         </div>
@@ -1091,14 +1091,21 @@
                             <div class="info-icon"><i class="fa-brands fa-whatsapp"></i></div>
                             <div class="info-text">
                                 <strong>וואטסאפ / טלפון</strong>
-                                <span><a href="https://wa.me/972586785577" target="_blank" style="color: #fff; text-decoration: none;">058-6785577</a></span>
+                                <span><a href="https://wa.me/972586785577" target="_blank">058-6785577</a></span>
                             </div>
                         </div>
                         <div class="info-item">
                             <div class="info-icon"><i class="fa-solid fa-envelope"></i></div>
                             <div class="info-text">
                                 <strong>דואר אלקטרוני</strong>
-                                <span>info@travelplot.co.il</span>
+                                <span><a href="mailto:travelplottal@gmail.com">travelplottal@gmail.com</a></span>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-icon"><i class="fa-solid fa-globe"></i></div>
+                            <div class="info-text">
+                                <strong>זמינות שירות</strong>
+                                <span>שירות אונליין וזום בפריסה ארצית</span>
                             </div>
                         </div>
                     </div>
@@ -1106,8 +1113,7 @@
 
                 <div class="footer-socials" style="margin: 30px 0 0; justify-content: flex-start;">
                     <a href="https://wa.me/972586785577" target="_blank" class="social-link" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
-                    <a href="#" class="social-link" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-                    <a href="#" class="social-link" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="mailto:travelplottal@gmail.com" class="social-link" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
                 </div>
             </div>
 
@@ -1124,6 +1130,7 @@
                     <label for="destination">יעד מועדף</label>
                     <select id="destination" class="form-control">
                         <option value="thailand">תאילנד והאיים</option>
+                        <option value="philippines">הפיליפינים</option>
                         <option value="japan">יפן</option>
                         <option value="other">יעד אחר / ייעוץ כללי</option>
                     </select>
@@ -1140,7 +1147,7 @@
         </div>
     </section>
 
-    <!-- Floating WhatsApp Button -->
+    <!-- Floating WhatsApp Quick Button -->
     <a href="https://wa.me/972586785577?text=שלום%20TravelPlot!%20אשמח%20לקבל%20ייעוץ%20ראשוני%20חינם." target="_blank" class="whatsapp-float" aria-label="דבר איתנו בוואטסאפ">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
@@ -1150,13 +1157,13 @@
             <span class="brand-logo">TravelPlot</span>
         </div>
         <p>חוויות מסע בלתי נשכחות ברחבי העולם | ייעוץ ראשוני חינם</p>
+        <p style="font-size: 13px; margin-top: 6px; color: rgba(255,255,255,0.4);">שירות אונליין בפריסה ארצית | travelplottal@gmail.com</p>
         <div class="footer-socials">
             <a href="https://wa.me/972586785577" target="_blank" class="social-link" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
-            <a href="#" class="social-link" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-            <a href="#" class="social-link" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="mailto:travelplottal@gmail.com" class="social-link" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
         </div>
         <div class="copyright">
-            &copy; 2026 <span class="brand-logo">TravelPlot</span> Ltd. כל הזכויות שמורות.
+            &copy; 2026 <span class="brand-logo">TravelPlot</span>. כל הזכויות שמורות.
         </div>
     </footer>
 
@@ -1164,7 +1171,7 @@
         <div class="modal-card">
             <div class="modal-icon"><i class="fa-solid fa-check"></i></div>
             <h3 style="font-size: 24px; font-weight: 800; margin-bottom: 10px;">תודה רבה!</h3>
-            <p style="color: var(--text-muted); margin-bottom: 24px;">פנייתך התקבלה בהצלחה. מומחה נסיעות מטעמנו יצור איתך קשר בהקדם.</p>
+            <p style="color: var(--text-muted); margin-bottom: 24px;">פנייתך התקבלה בהצלחה. נחזור אליך בהקדם בוואטסאפ או במייל.</p>
             <button class="btn-primary" style="width: 100%; justify-content: center;" onclick="closeModal()">סגור</button>
         </div>
     </div>
@@ -1177,7 +1184,6 @@
         const slideIntervalTime = 5000;
         let slideTimer;
 
-        // Generate Dots dynamically
         slides.forEach((_, index) => {
             const dot = document.createElement('div');
             dot.classList.add('dot');
@@ -1210,10 +1216,9 @@
             slideTimer = setInterval(nextSlide, slideIntervalTime);
         }
 
-        // Start Automatic Cycle
         slideTimer = setInterval(nextSlide, slideIntervalTime);
 
-        // Header Navigation Scroll Effect
+        // Header Scroll Effect
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
@@ -1223,7 +1228,7 @@
             }
         });
 
-        // Mobile Menu Toggle
+        // Mobile Navigation Toggle
         const menuToggle = document.getElementById('menuToggle');
         const navMenu = document.getElementById('navMenu');
 
@@ -1239,7 +1244,6 @@
             }
         });
 
-        // Close Mobile Menu when clicking a nav link
         document.querySelectorAll('#navMenu a').forEach(link => {
             link.addEventListener('click', () => {
                 navMenu.classList.remove('active');
@@ -1249,13 +1253,12 @@
             });
         });
 
-        // Contact Form Submission Handling
+        // Contact Form Handler
         const contactForm = document.getElementById('contactForm');
         const successModal = document.getElementById('successModal');
 
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            // Show modal
             successModal.classList.add('active');
             contactForm.reset();
         });
