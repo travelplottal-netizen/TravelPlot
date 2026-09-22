@@ -24,6 +24,8 @@
             --primary-color: #008080;
             --primary-hover: #005f5f;
             --accent-gold: #e5a93c;
+            --whatsapp-green: #25d366;
+            --whatsapp-hover: #1eae53;
             --text-dark: #1e293b;
             --text-muted: #64748b;
             --bg-light: #f8fafc;
@@ -162,6 +164,7 @@
             padding: 5px;
         }
 
+        /* Hero Section & Background Slideshow */
         .hero {
             position: relative;
             min-height: 100vh;
@@ -333,6 +336,7 @@
             border-radius: 12px;
         }
 
+        /* Destinations Section */
         .destinations {
             padding: 100px 6%;
             background-color: var(--bg-light);
@@ -480,6 +484,7 @@
             transform: scaleX(-1) translateX(4px);
         }
 
+        /* About Section */
         .about {
             padding: 120px 6%;
             background: #ffffff;
@@ -585,6 +590,7 @@
             font-weight: 600;
         }
 
+        /* Contact Section & Form Styling */
         .contact {
             padding: 100px 6%;
             background: var(--bg-light);
@@ -694,32 +700,61 @@
 
         textarea.form-control {
             resize: vertical;
-            min-height: 110px;
+            min-height: 100px;
         }
 
-        .btn-submit {
-            width: 100%;
+        .dual-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin-top: 10px;
+        }
+
+        .btn-whatsapp-submit {
             padding: 16px;
-            background: var(--primary-color);
+            background: var(--whatsapp-green);
             color: #ffffff;
             border: none;
             border-radius: 12px;
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 700;
             cursor: pointer;
             transition: var(--transition-smooth);
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
         }
 
-        .btn-submit:hover {
+        .btn-whatsapp-submit:hover {
+            background: var(--whatsapp-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.35);
+        }
+
+        .btn-email-submit {
+            padding: 16px;
+            background: var(--primary-color);
+            color: #ffffff;
+            border: none;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-email-submit:hover {
             background: var(--primary-hover);
             transform: translateY(-2px);
             box-shadow: 0 8px 20px rgba(0, 128, 128, 0.3);
         }
 
+        /* Footer */
         footer {
             background: #090d16;
             color: rgba(255, 255, 255, 0.6);
@@ -793,6 +828,7 @@
             padding-top: 25px;
         }
 
+        /* Modal Popup */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -899,6 +935,10 @@
                 grid-template-columns: 1fr;
             }
 
+            .dual-buttons {
+                grid-template-columns: 1fr;
+            }
+
             .contact-info, .contact-form {
                 padding: 35px 25px;
             }
@@ -985,7 +1025,7 @@
                 </div>
                 <div class="card-body">
                     <h3 class="card-title">תאילנד והאיים הקסומים</h3>
-                    <p class="card-text">לגלות את האיים המרהיבים של תאילנד, שיוט במי טורקיז, לגונות נסתרות וצוקים עוצרי נשימה.</p>
+                    <p class="card-text">חקרו את האיים המרהיבים בתאילנד, שיוט במי טורקיז, לגונות נסתרות וצוקים עוצרי נשימה.</p>
                     <div class="card-footer">
                         <div class="card-price">
                             <i class="fa-solid fa-gift"></i> ייעוץ ראשוני חינם
@@ -1003,7 +1043,7 @@
                 </div>
                 <div class="card-body">
                     <h3 class="card-title">הפיליפינים הטרופית</h3>
-                    <p class="card-text">חופשה מרגיעה ומפנקת בפיליפינים, חופים לבנים, ריזורטים מרהיבים וצלילות בשמורות טבע נסתרות.</p>
+                    <p class="card-text">ליהנות מחופשה מרגיעה ומפנקת בפיליפינים, חופים לבנים, ריזורטים יוקרתיים וצלילות בשמורות טבע נסתרות.</p>
                     <div class="card-footer">
                         <div class="card-price">
                             <i class="fa-solid fa-gift"></i> ייעוץ ראשוני חינם
@@ -1077,7 +1117,7 @@
         <div class="section-header">
             <span class="section-label">צור קשר</span>
             <h2 class="section-title">מתחילים לתכנן את המסע הבא</h2>
-            <p class="section-subtitle">השאירו פרטים או פנו אלינו בוואטסאפ לתיאום <strong>ייעוץ ראשוני חינם</strong>.</p>
+            <p class="section-subtitle">השאירו פרטים ונציגנו יחזור אליכם במייל, או שלחו הודעה ישירה בוואטסאפ לתיאום <strong>ייעוץ ראשוני חינם</strong>.</p>
         </div>
 
         <div class="contact-container">
@@ -1117,32 +1157,41 @@
                 </div>
             </div>
 
-            <form class="contact-form" id="contactForm">
+            <!-- Dual Form (Formspree + Instant WhatsApp redirect) -->
+            <!-- To connect real Formspree: Create a free account at formspree.io and paste your ID into action url below -->
+            <form class="contact-form" id="contactForm" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
                 <div class="form-group">
                     <label for="name">שם מלא</label>
-                    <input type="text" id="name" class="form-control" placeholder="ישראל ישראלי" required>
+                    <input type="text" id="name" name="name" class="form-control" placeholder="ישראל ישראלי" required>
                 </div>
                 <div class="form-group">
                     <label for="phone">מספר טלפון / וואטסאפ</label>
-                    <input type="tel" id="phone" class="form-control" placeholder="058-6785577" required>
+                    <input type="tel" id="phone" name="phone" class="form-control" placeholder="058-6785577" required>
                 </div>
                 <div class="form-group">
                     <label for="destination">יעד מועדף</label>
-                    <select id="destination" class="form-control">
-                        <option value="thailand">תאילנד והאיים</option>
-                        <option value="philippines">הפיליפינים</option>
-                        <option value="japan">יפן</option>
-                        <option value="other">יעד אחר / ייעוץ כללי</option>
+                    <select id="destination" name="destination" class="form-control">
+                        <option value="תאילנד והאיים">תאילנד והאיים</option>
+                        <option value="הפיליפינים">הפיליפינים</option>
+                        <option value="יפן">יפן</option>
+                        <option value="יעד אחר / ייעוץ כללי">יעד אחר / ייעוץ כללי</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="message">הודעה או בקשות מיוחדות</label>
-                    <textarea id="message" class="form-control" placeholder="ספרו לנו על תאריכים מתוכננים, הרכב המטיילים או העדפות מיוחדות..."></textarea>
+                    <textarea id="message" name="message" class="form-control" placeholder="ספרו לנו על תאריכים מתוכננים, הרכב המטיילים או העדפות מיוחדות..."></textarea>
                 </div>
-                <button type="submit" class="btn-submit">
-                    <span>קבל ייעוץ ראשוני חינם</span>
-                    <i class="fa-solid fa-paper-plane"></i>
-                </button>
+
+                <div class="dual-buttons">
+                    <button type="button" class="btn-whatsapp-submit" onclick="sendToWhatsApp()">
+                        <i class="fa-brands fa-whatsapp"></i>
+                        <span>שלח ב-WhatsApp</span>
+                    </button>
+                    <button type="submit" class="btn-email-submit">
+                        <i class="fa-solid fa-paper-plane"></i>
+                        <span>שלח למייל</span>
+                    </button>
+                </div>
             </form>
         </div>
     </section>
@@ -1171,7 +1220,7 @@
         <div class="modal-card">
             <div class="modal-icon"><i class="fa-solid fa-check"></i></div>
             <h3 style="font-size: 24px; font-weight: 800; margin-bottom: 10px;">תודה רבה!</h3>
-            <p style="color: var(--text-muted); margin-bottom: 24px;">פנייתך התקבלה בהצלחה. נחזור אליך בהקדם בוואטסאפ או במייל.</p>
+            <p style="color: var(--text-muted); margin-bottom: 24px;" id="modalMessage">פנייתך התקבלה בהצלחה. נחזור אליך בהקדם בוואטסאפ או במייל.</p>
             <button class="btn-primary" style="width: 100%; justify-content: center;" onclick="closeModal()">סגור</button>
         </div>
     </div>
@@ -1253,14 +1302,71 @@
             });
         });
 
-        // Contact Form Handler
+        // Direct WhatsApp Submission Logic
+        function sendToWhatsApp() {
+            const name = document.getElementById('name').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const destination = document.getElementById('destination').value;
+            const message = document.getElementById('message').value.trim();
+
+            if (!name || !phone) {
+                alert('אנא מלא את השם ומספר הטלפון שלך.');
+                return;
+            }
+
+            let text = `שלום TravelPlot! 👋%0A`;
+            text += `אני מעוניין/ת בייעוץ ראשוני חינם.%0A%0A`;
+            text += `*שם:* ${encodeURIComponent(name)}%0A`;
+            text += `*טלפון:* ${encodeURIComponent(phone)}%0A`;
+            text += `*יעד מועדף:* ${encodeURIComponent(destination)}%0A`;
+            if (message) {
+                text += `*הערות:* ${encodeURIComponent(message)}%0A`;
+            }
+
+            const waUrl = `https://wa.me/972586785577?text=${text}`;
+            window.open(waUrl, '_blank');
+        }
+
+        // Email / Formspree Submission Handler with Modal Fallback
         const contactForm = document.getElementById('contactForm');
         const successModal = document.getElementById('successModal');
+        const modalMessage = document.getElementById('modalMessage');
 
-        contactForm.addEventListener('submit', (e) => {
+        contactForm.addEventListener('submit', async (e) => {
+            const actionUrl = contactForm.getAttribute('action');
+
+            // If user hasn't set their Formspree ID yet, show friendly alert modal simulation
+            if (actionUrl.includes('YOUR_FORMSPREE_ID')) {
+                e.preventDefault();
+                modalMessage.innerText = 'הודעתך נרשמה! (כדי לקבל את הפניות ישירות למייל travelplottal@gmail.com, פתח חשבון בחינם ב-Formspree.io והחלף את המזהה בטופס).';
+                successModal.classList.add('active');
+                contactForm.reset();
+                return;
+            }
+
+            // Real Formspree submit via fetch AJAX
             e.preventDefault();
-            successModal.classList.add('active');
-            contactForm.reset();
+            const formData = new FormData(contactForm);
+            
+            try {
+                const response = await fetch(actionUrl, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    modalMessage.innerText = 'הודעתך נשלחה בהצלחה! נחזור אליך בהקדם במייל או בוואטסאפ.';
+                    successModal.classList.add('active');
+                    contactForm.reset();
+                } else {
+                    alert('אירעה שגיאה בשליחת הטופס. אנא נסה שוב או פנה אלינו ישירות בוואטסאפ.');
+                }
+            } catch (err) {
+                alert('אירעה שגיאה. אנא בדוק את חיבור האינטרנט או פנה אלינו בוואטסאפ.');
+            }
         });
 
         function closeModal() {
