@@ -1,6 +1,6 @@
-/* =========================
-   BASIC RESET
-   ========================= */
+/* ==============================
+   GENERAL
+   ============================== */
 
 * {
     box-sizing: border-box;
@@ -12,54 +12,59 @@ html {
 
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
-    color: #111;
+    font-family: 'Montserrat', sans-serif;
+    color: black;
 }
 
 
-/* =========================
+/* ==============================
    HOME
-   ========================= */
+   ============================== */
 
 .home {
-    min-height: 100vh;
-
     background:
         linear-gradient(
-            rgba(0, 0, 0, 0.35),
-            rgba(0, 0, 0, 0.35)
+            rgba(0, 0, 0, 0.25),
+            rgba(0, 0, 0, 0.25)
         ),
-        url("https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=2000&q=80");
+        url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlKDuTTHV0Z-A4H9O1UN0pJQINN2uJp9jD25hLDpN-3exuv4IIvzr2o3Q&s=10')
+        no-repeat center center;
 
     background-size: cover;
-    background-position: center;
+    background-attachment: fixed;
 
+    min-height: 100vh;
     color: white;
 }
 
 
-/* =========================
+/* ==============================
    HEADER
-   ========================= */
+   ============================== */
 
 header {
-    height: 80px;
-
-    padding: 0 50px;
+    padding: 25px 50px;
 
     display: flex;
     justify-content: space-between;
     align-items: center;
 
     background: rgba(0, 0, 0, 0.45);
+
+    position: relative;
+    z-index: 10;
 }
 
 
 /* LOGO */
 
 .logo {
-    font-size: 25px;
-    font-weight: bold;
+    color: white;
+    text-decoration: none;
+
+    font-size: 24px;
+    font-weight: 700;
+
     letter-spacing: 1px;
 }
 
@@ -75,182 +80,253 @@ nav a {
     color: white;
     text-decoration: none;
 
-    font-size: 15px;
+    font-size: 14px;
+    font-weight: 500;
 
-    transition: opacity 0.3s;
+    transition: 0.3s ease;
 }
 
 nav a:hover {
-    opacity: 0.6;
+    opacity: 0.65;
 }
 
 
-/* =========================
+/* MOBILE MENU BUTTON */
+
+.menu-button {
+    display: none;
+
+    background: none;
+    border: none;
+
+    color: white;
+    font-size: 28px;
+
+    cursor: pointer;
+}
+
+
+/* ==============================
    HERO
-   ========================= */
+   ============================== */
 
 .hero {
     min-height: calc(100vh - 80px);
 
     display: flex;
-    flex-direction: column;
-
     justify-content: center;
     align-items: center;
 
     text-align: center;
 
-    padding: 20px;
+    padding: 40px 20px;
 }
 
-.hero p {
+.hero-content {
+    max-width: 750px;
+}
+
+.small-heading {
     font-size: 13px;
+    font-weight: 600;
+
     letter-spacing: 4px;
-    font-weight: bold;
+
+    margin-bottom: 20px;
 }
 
 .hero h1 {
-    font-size: 90px;
+    font-size: clamp(55px, 10vw, 110px);
 
-    margin: 10px 0;
+    margin: 0 0 20px;
 
-    letter-spacing: -4px;
+    font-weight: 700;
+    letter-spacing: -3px;
 }
 
-.hero h2 {
-    font-size: 20px;
-    font-weight: normal;
+.hero p:not(.small-heading) {
+    font-size: 18px;
+    line-height: 1.7;
 
-    margin-bottom: 35px;
+    max-width: 600px;
+    margin: 0 auto 35px;
 }
 
 
-/* =========================
-   BUTTON
-   ========================= */
+/* BUTTON */
 
-.button {
+.hero-button {
     display: inline-block;
 
-    padding: 15px 30px;
+    padding: 14px 28px;
 
     background: white;
-    color: #111;
+    color: black;
 
     text-decoration: none;
 
-    font-weight: bold;
+    font-size: 14px;
+    font-weight: 600;
 
-    transition: 0.3s;
+    border-radius: 3px;
+
+    transition: 0.3s ease;
 }
 
-.button:hover {
-    background: #111;
+.hero-button:hover {
+    background: black;
     color: white;
+
+    transform: translateY(-2px);
 }
 
 
-/* =========================
+/* ==============================
    ABOUT
-   ========================= */
+   ============================== */
 
 .about {
-    background: white;
+    background: #ffffff;
 
-    padding: 120px 25px;
+    padding: 120px 20px;
 }
 
-.content {
-    max-width: 800px;
-
+.about-container {
+    max-width: 900px;
     margin: auto;
 }
 
-.label {
+.about-text {
+    max-width: 750px;
+}
+
+.section-label {
+    color: #777;
+
     font-size: 12px;
+    font-weight: 600;
 
     letter-spacing: 3px;
 
-    color: #777;
-
-    font-weight: bold;
+    margin-bottom: 15px;
 }
 
 .about h2,
 .contact h2 {
-    font-size: 45px;
+    font-size: 42px;
 
-    margin-top: 10px;
+    margin: 0 0 30px;
+
+    letter-spacing: -1px;
 }
 
-.about p:not(.label),
-.contact p:not(.label) {
-    font-size: 17px;
+.about p:not(.section-label) {
+    color: #555;
+
+    font-size: 16px;
+    line-height: 1.9;
+
+    margin-bottom: 20px;
+}
+
+
+/* ==============================
+   CONTACT
+   ============================== */
+
+.contact {
+    background: #f4f4f4;
+
+    text-align: center;
+
+    padding: 100px 20px;
+}
+
+.contact-container {
+    max-width: 650px;
+    margin: auto;
+}
+
+.contact p:not(.section-label) {
+    color: #555;
 
     line-height: 1.8;
 
-    color: #555;
+    margin-bottom: 30px;
 }
 
 
-/* =========================
-   CONTACT
-   ========================= */
-
-.contact {
-    background: #f3f3f3;
-
-    padding: 120px 25px;
-
-    text-align: center;
-}
-
-
-/* =========================
+/* ==============================
    FOOTER
-   ========================= */
+   ============================== */
 
 footer {
     background: #111;
 
-    color: white;
+    color: #aaa;
 
     text-align: center;
 
     padding: 25px;
 
-    font-size: 13px;
+    font-size: 12px;
 }
 
 
-/* =========================
+/* ==============================
    MOBILE
-   ========================= */
+   ============================== */
 
 @media (max-width: 700px) {
 
     header {
-        padding: 0 20px;
+        padding: 20px 25px;
     }
 
     nav {
-        gap: 15px;
+        display: none;
+
+        position: absolute;
+
+        top: 100%;
+        left: 0;
+        right: 0;
+
+        flex-direction: column;
+
+        gap: 0;
+
+        background: rgba(0, 0, 0, 0.95);
+
+        padding: 10px 0;
+    }
+
+    nav.active {
+        display: flex;
     }
 
     nav a {
-        font-size: 12px;
+        padding: 15px 25px;
+    }
+
+    .menu-button {
+        display: block;
     }
 
     .hero h1 {
-        font-size: 55px;
+        letter-spacing: -2px;
     }
 
-    .hero h2 {
-        font-size: 17px;
+    .hero p:not(.small-heading) {
+        font-size: 16px;
+    }
+
+    .about {
+        padding: 80px 25px;
     }
 
     .about h2,
     .contact h2 {
-        font-size: 35px;
+        font-size: 34px;
     }
 }
