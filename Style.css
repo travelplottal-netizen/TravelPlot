@@ -1,0 +1,12 @@
+body {
+  margin: 0;
+  font-family: 'Montserrat', Sans-serif;
+  color: black;
+}
+
+ .home { 
+ background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlKDuTTHV0Z-A4H9O1UN0pJqINN2uJp9jD25hLDpN-3exuv4IIvzr2o3Q&s=10') no-repeat center center fixed;
+  background-size: cover;
+   height: 100vh; 
+ }
+
