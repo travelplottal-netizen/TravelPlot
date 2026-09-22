@@ -10,3 +10,10 @@ body {
    height: 100vh; 
  }
 
+header { 
+Padding: 25px;
+  display: flex;
+  Justify-content: space-between;
+  allign-items: center;
+  background: rgba)0,0,0,0,6);
+}
